@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Roboto, Raleway } from "next/font/google"; // Importing Raleway font
 import "./globals.css";
+import ContextProvider from "@/components/ContextProvider/ContextProvider";
 
+// Importing the Geist, Geist_Mono, Roboto fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -9,6 +11,18 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+// Importing the Roboto font
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+});
+
+// Importing the Raleway font
+const raleway = Raleway({
+  variable: "--font-raleway",
   subsets: ["latin"],
 });
 
@@ -25,9 +39,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${raleway.variable} antialiased`} // Added Raleway font
       >
-        {children}
+        <ContextProvider>
+          <main className="max-w-[1440px] min-h-screen m-auto bg-[#04125a]">
+            {children}
+          </main>
+        </ContextProvider>
       </body>
     </html>
   );
