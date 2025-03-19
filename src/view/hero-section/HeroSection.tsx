@@ -11,7 +11,7 @@ const HeroSection = () => {
   return (
     <section className="text-white lg:py-20 py-8 flex flex-col items-center justify-center text-center sm:px-5 px-3">
       <div>
-        <h1 className="sm:text-[75px] text-5xl sm:leading-[85px] leading-12   font-extrabold mx-4 mt-4 mb-2 font-raleway">
+        <h1 className=" text-2xl sm:text-4xl md:text-5xl lg:text-[75px] sm:leading-[85px] leading-12   font-extrabold mx-4 mt-4 mb-2 font-raleway">
           DIGITAL SERVICES
         </h1>
         <p className="sm:text-[25px] text-base sm:font-extrabold font-bold mb-6">

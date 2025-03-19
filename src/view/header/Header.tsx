@@ -11,33 +11,37 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header className="flex justify-between items-center p-4 bg-gradient-to-r text-white">
-      <div className="hidden md:flex text-2xl font-bold w-[100px] lg:w-[117px] h-[30px]">
-        <Image src={logo} alt="Logo" />
+      <Link href="#">
+        <div className="hidden md:flex text-2xl font-bold w-[100px] lg:w-[117px] h-[30px]">
+          <Image src={logo} alt="Logo" />
+        </div>
+      </Link>
+      <div className="flex justify-between gap-16 xl:gap-32 items-center flex-row">
+        <nav className="hidden md:flex md:gap-3 lg:gap-8 xl:gap-10 2xl:gap-12 lg:font-semibold font-normal  lg:text-base text-sm leading-[22px] text-center uppercase">
+          {[
+            "Home",
+            "Service",
+            "Combo Sales",
+            "Portfolio",
+            "About Us",
+            "Blogs",
+          ].map((item, index) => (
+            <Link
+              key={index}
+              href="#"
+              className={`hover:underline ${
+                item === "Home" ? "text-[#FF693B]" : ""
+              }`}
+            >
+              {item}
+            </Link>
+          ))}
+        </nav>
+        <Button
+          text="See Pricing"
+          className="hidden md:flex text-sm border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200] 2xl:h-[50px] 2xl:w-[238px] xl:h-[50px] xl:w-[200px] lg:h-[50px] lg:w-[160px] md:h-[36px] md:w-[100px]"
+        />
       </div>
-      <nav className="hidden md:flex md:gap-3 lg:gap-8 xl:gap-10 2xl:gap-12 lg:font-semibold font-normal  lg:text-base text-sm leading-[22px] text-center uppercase">
-        {[
-          "Home",
-          "Service",
-          "Combo Sales",
-          "Portfolio",
-          "About Us",
-          "Blogs",
-        ].map((item, index) => (
-          <Link
-            key={index}
-            href="#"
-            className={`hover:underline ${
-              item === "Home" ? "text-[#FF693B]" : ""
-            }`}
-          >
-            {item}
-          </Link>
-        ))}
-      </nav>
-      <Button
-        text="See Pricing"
-        className="hidden md:flex text-sm border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200] 2xl:h-[50px] 2xl:w-[238px] xl:h-[50px] xl:w-[200px] lg:h-[50px] lg:w-[160px] md:h-[36px] md:w-[100px]"
-      />
 
       {/* Mobile view */}
       <div

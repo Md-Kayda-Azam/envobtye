@@ -185,7 +185,7 @@ const ContactSection = () => {
                         {item.label}
                       </span>
                       <div className="flex gap-3 items-center">
-                        <span className="font-semibold text-base leading-5">
+                        <span className="font-semibold text-sm sm:text-base leading-5">
                           {item.value}
                         </span>
                         <FaExternalLinkAlt
@@ -208,7 +208,7 @@ const ContactSection = () => {
         </div>
       </div>
       <hr className="w-full border border-[#F1F3F726]" />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
