@@ -145,12 +145,12 @@ const ContactSection = () => {
           </div>
 
           {/* Right Side - Contact Info */}
-          <div className="w-full md:w-[551px] mt-10 md:mt-0 md:ml-10">
-            <div className="flex flex-col md:gap-5">
+          <div className="w-full md:w-[551px] mt-10 md:mt-0 pb-12">
+            <div className="flex flex-col md:items-start items-center lg:gap-5">
               <h2 className="text-2xl text-center sm:text-start sm:text-3xl lg:text-5xl font-extrabold sm:leading-12">
                 Let us know what you think!
               </h2>
-              <p className="text-[#FFFFFF] text-center sm:text-start mt-2 font-normal text-base leading-6">
+              <p className="text-[#FFFFFF] text-center md:text-start mt-2 font-normal text-base leading-6">
                 Got something on your mind? Share it with us! Drop a message,
                 and we will respond quickly to assist you.
               </p>
