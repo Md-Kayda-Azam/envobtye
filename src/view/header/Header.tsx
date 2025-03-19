@@ -10,7 +10,7 @@ import { IoMdClose } from "react-icons/io";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <header className="flex justify-between items-center p-4 bg-gradient-to-r text-white sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+    <header className="flex justify-between items-center p-4 bg-gradient-to-r text-white">
       <div className="hidden md:flex text-2xl font-bold w-[100px] lg:w-[117px] h-[30px]">
         <Image src={logo} alt="Logo" />
       </div>

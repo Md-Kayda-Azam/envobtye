@@ -9,7 +9,7 @@ import Button from "@/components/Button/Button";
 const HowWeWork: React.FC = () => {
   return (
     <section
-      className="relative py-16 px-6 text-center bg-[#163ba3] max-w-full h-[1024px] bg-blend-overlay"
+      className="relative py-16 px-6 text-center bg-[#163ba3] max-w-full max-h-[1024px] bg-blend-overlay"
       style={{
         backgroundImage: `url(${waveBackground.src})`,
         backgroundRepeat: "np-repeat",
@@ -24,7 +24,7 @@ const HowWeWork: React.FC = () => {
           <span className="text-[#FFFFFF] font-semibold text-xl leading-7">
             HOW WE WORK
           </span>
-          <h2 className="text-[45px] md:text-5xl font-extrabold text-white leading-[51px] max-w-[800px] mx-auto">
+          <h2 className="text-3xl sm:text-[45px] md:text-5xl font-extrabold text-white leading-[51px] max-w-[800px] mx-auto">
             Our Process For Delivering Results
           </h2>
           <p className="text-gray-300 text-sm mt-2 max-w-[700px]">
@@ -34,8 +34,12 @@ const HowWeWork: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex justify-center items-center w-[900px] h-[500px]">
-          <Image src={background} alt="BANNER" width={1320} />
+        <div className="flex justify-center items-center w-full max-w-[900px] h-[300px] sm:h-[400px] md:h-[500px]">
+          <Image
+            src={background}
+            alt="BANNER"
+            className="w-full h-full object-contain"
+          />
         </div>
 
         {/* Contact Now Button */}

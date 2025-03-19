@@ -31,13 +31,13 @@ const ContactSection = () => {
 
   return (
     <div className="bg-[#001246] text-white">
-      <div className="flex flex-col md:flex-row pt-40 pb-20 px-6 md:px-20 justify-between items-center md:items-start">
-        <div className="w-full max-w-[1106px] max-h-[426px] flex justify-center items-start flex-row">
+      <div className="flex flex-col md:flex-row py-10 lg:pt-40 lg:pb-20 px-6 md:px-20 justify-between items-center md:items-start">
+        <div className="w-full max-w-[1106px] h-full gap-10 lg-gap-0 flex flex-col lg:flex-row justify-center items-start lg:items-center">
           {/* Left Side - Form */}
-          <div className="w-full md:w-[523px] bg-[#0A2C8C33] p-8 rounded-lg shadow-lg">
+          <div className="w-full lg:w-[523px] bg-[#0A2C8C33] p-8 rounded-lg shadow-lg">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
             >
               <div className="flex gap-2 flex-col">
                 <label
@@ -115,7 +115,7 @@ const ContactSection = () => {
                 />
               </div>
 
-              <div className="flex flex-col gap-2 md:col-span-2">
+              <div className="flex flex-col gap-2 sm:col-span-2">
                 <label
                   htmlFor=""
                   className="font-semibold text-sm leading-5 text-[#FFFFFF]"
@@ -136,7 +136,7 @@ const ContactSection = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="md:col-span-2 mt-4 w-ful max-w-[151px] bg-[#FFFFFF1A] px-3 py-3 rounded-md text-[#FFFFFF] font-semibold  border border-[#F1F3F74D] shadow-[2px] shadow-[#19213D14] text-sm leading-5 flex justify-baseline items-center gap-2"
+                className="sm:col-span-2 mt-4 w-full sm:max-w-[151px] bg-[#FFFFFF1A] px-3 py-3 rounded-md text-[#FFFFFF] font-semibold  border border-[#F1F3F74D] shadow-[2px] shadow-[#19213D14] text-sm leading-5 flex justify-center sm:justify-baseline items-center gap-2"
               >
                 <span> Send Message</span>
                 <FaArrowRight />
@@ -146,88 +146,69 @@ const ContactSection = () => {
 
           {/* Right Side - Contact Info */}
           <div className="w-full md:w-[551px] mt-10 md:mt-0 md:ml-10">
-            <h2 className="text-5xl font-extrabold leading-12">
-              Let us know what you think!
-            </h2>
-            <p className="text-[#FFFFFF] mt-2 font-normal text-base leading-6">
-              Got something on your mind? Share it with us! Drop a message, and
-              we will respond quickly to assist you.
-            </p>
-
+            <div className="flex flex-col md:gap-5">
+              <h2 className="text-2xl text-center sm:text-start sm:text-3xl lg:text-5xl font-extrabold sm:leading-12">
+                Let us know what you think!
+              </h2>
+              <p className="text-[#FFFFFF] text-center sm:text-start mt-2 font-normal text-base leading-6">
+                Got something on your mind? Share it with us! Drop a message,
+                and we will respond quickly to assist you.
+              </p>
+            </div>
             <div className="mt-6 space-y-4">
-              <div className="flex items-center gap-3">
-                <Image src={Email} alt="Email Logo" height={46} width={46} />
-                <div className="flex items-start flex-col">
-                  <span className="font-normal text-sm leading-5 text-[#FFFFFF]">
-                    Bussiness:
-                  </span>
-                  <div className="flex gap-3 items-center">
-                    <span className="font-semibold text-base leading-5">
-                      support@yourwebsite.com
-                    </span>
-                    <FaExternalLinkAlt
-                      size={10}
-                      fill="#4D5AE8"
-                      className="cursor-pointer"
+              {[
+                {
+                  icon: Email,
+                  label: "Business:",
+                  value: "support@yourwebsite.com",
+                },
+                { icon: Whatapp, label: "Whatsapp:", value: "+1 647 777 2017" },
+                {
+                  icon: Linkedin,
+                  label: "LinkedIn:",
+                  value: "www.linkedin.com/company/envobyte",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center gap-3 text-center"
+                >
+                  <div className=" sm:w-full flex justify-center items-center  sm:items-start flex-col sm:flex-row sm:justify-start gap-3">
+                    <Image
+                      src={item.icon}
+                      alt={`${item.label} Logo`}
+                      height={46}
+                      width={46}
                     />
+                    <div className="flex flex-col items-center sm:items-start">
+                      <span className="font-normal text-sm leading-5 text-[#FFFFFF]">
+                        {item.label}
+                      </span>
+                      <div className="flex gap-3 items-center">
+                        <span className="font-semibold text-base leading-5">
+                          {item.value}
+                        </span>
+                        <FaExternalLinkAlt
+                          size={10}
+                          fill="#4D5AE8"
+                          className="cursor-pointer"
+                        />
+                      </div>
+                    </div>
                   </div>
+                  {index !== 2 && (
+                    <div className="w-full justify-start items-center">
+                      <hr className="w-full sm:w-[300px] border border-[#F1F3F726]" />
+                    </div>
+                  )}
                 </div>
-              </div>
-              <hr className="w-full max-w-[340px] border border-[#F1F3F726]" />
-              <div className="flex items-center gap-3">
-                <Image
-                  src={Whatapp}
-                  alt="Whatsapp Logo"
-                  className=""
-                  height={46}
-                  width={46}
-                />
-                <div className="flex items-start flex-col">
-                  <span className="font-normal text-sm leading-5 text-[#FFFFFF]">
-                    Whatsapp:
-                  </span>
-                  <div className="flex gap-3 items-center">
-                    <span className="font-semibold text-base leading-5">
-                      +1 647 777 2017
-                    </span>
-                    <FaExternalLinkAlt
-                      size={10}
-                      fill="#4D5AE8"
-                      className="cursor-pointer"
-                    />
-                  </div>
-                </div>
-              </div>
-              <hr className="w-full max-w-[340px] border border-[#F1F3F726]" />
-              <div className="flex items-center gap-3">
-                <Image
-                  src={Linkedin}
-                  alt="LinkedIn Logo"
-                  height={46}
-                  width={46}
-                />
-                <div className="flex items-start flex-col">
-                  <span className="font-normal text-sm leading-5 text-[#FFFFFF]">
-                    LinkedIn:
-                  </span>
-                  <div className="flex gap-3 items-center">
-                    <span className="font-semibold text-base leading-5">
-                      www.linkedin.com/company/envobyte
-                    </span>
-                    <FaExternalLinkAlt
-                      size={10}
-                      fill="#4D5AE8"
-                      className="cursor-pointer"
-                    />
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
       <hr className="w-full border border-[#F1F3F726]" />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

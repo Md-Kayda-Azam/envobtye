@@ -67,7 +67,7 @@ const FAQSection: React.FC = () => {
       <div className="w-full max-w-[900px] px-4">
         {/* Section Title */}
         <div className="flex flex-col justify-center items-center gap-2 mb-10">
-          <h2 className="text-[45px] md:text-5xl font-bold text-[#0A2C8C] leading-[52px] max-w-[800px] mx-auto text-center">
+          <h2 className="text-3xl sm:text-[45px] md:text-5xl font-bold text-[#0A2C8C] leading-[52px] max-w-[800px] mx-auto text-center">
             Frequently Asked Questions
           </h2>
         </div>
@@ -87,7 +87,7 @@ const FAQSection: React.FC = () => {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3
-                    className={`text-2xl leading-[22px] font-semibold ${
+                    className={`text-lg sm:text-2xl leading-[22px] font-semibold ${
                       openFAQ === faq.id ? "text-[#0A2C8C]" : "text-[#6D758F]"
                     }`}
                   >
@@ -109,7 +109,7 @@ const FAQSection: React.FC = () => {
                     className="overflow-hidden"
                   >
                     <div className="pb-4 pl-12 text-gray-600">
-                      <p className="font-normal text-2xl leading-[34px]">
+                      <p className="font-normal text-base sm:text-2xl leading-[34px]">
                         {faq.answer}
                       </p>
                     </div>

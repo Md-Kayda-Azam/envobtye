@@ -15,13 +15,13 @@ export default function Home() {
       <Header />
       <HeroSection />
       <AvailableServices />
-      {/* <GetYourAnswers />
+      <GetYourAnswers />
       <CheckOurPreviousWork />
       <HowWeWork />
       <ClientReviews />
       <TeamMember />
       <FAQSection />
-      <ContactUs /> */}
+      <ContactUs />
     </div>
   );
 }

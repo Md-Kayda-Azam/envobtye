@@ -18,16 +18,16 @@ const HeroSection = () => {
           BUILDING YOUR EMPIRE DIGITALLY
         </p>
       </div>
-      <div className="flex justify-center flex-col sm:flex-row items-center gap-4 mt-8">
+      <div className="w-full flex sm:flex-row flex-col justify-center items-center gap-4 mt-8">
         <Button
           text="SEE PRICING"
-          className="text-base w-[238px] h-[50px] border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"
+          className="text-sm sm:text-base w-full sm:w-[238px] max-w-[300px] h-[50px] border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"
         />
         <Button
           text="BOOK AN APPOINTMENT"
           bgColor="#19213D14"
           textColor="white"
-          className="border border-white text-base w-[238px] h-[50px]  rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#04125a]"
+          className="text-sm sm:text-base border border-white w-full sm:w-[238px] max-w-[300px] h-[50px] rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#04125a]"
         />
       </div>
       <div className="bg-[#04135B] grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 items-center  text-white  gap-10  mt-10 py-4 px-6">

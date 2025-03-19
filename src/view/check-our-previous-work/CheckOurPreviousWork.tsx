@@ -39,35 +39,71 @@ const CheckOurPreviousWork: React.FC = () => {
     arrows: false,
     centerMode: true,
     centerPadding: "30px",
+    responsive: [
+      {
+        breakpoint: 1024, // 1024px
+        settings: {
+          slidesToShow: 2,
+          centerPadding: "20px",
+        },
+      },
+      {
+        breakpoint: 768, // 768px
+        settings: {
+          slidesToShow: 1,
+          centerPadding: "10px",
+        },
+      },
+      {
+        breakpoint: 480, // 480px (Mobile View)
+        settings: {
+          slidesToShow: 1,
+          centerPadding: "0px",
+        },
+      },
+    ],
   };
 
   return (
     <div className="bg-[#FFFFFF] pt-10">
       <div className="px-9 sm:px-5">
-        <div className="text-start flex justify-between items-center w-full mb-6">
-          <div>
+        <div className="text-start gap-5 sm:gap-0 sm:flex-row flex-col flex justify-between items-center w-full mb-6">
+          <div className="flex flex-col items-center justify-center sm:justify-start sm:items-start">
             <span className="text-base font-semibold leading-6 text-[#0C89FF]">
               UI/UX PORTFOLIO
             </span>
-            <h2 className="text-[#001246] text-5xl font-bold">
+            <h2 className="text-[#001246] text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
               Check Our Previous Work
             </h2>
           </div>
           <Button
             text="All Portfolio"
-            width={180}
-            height={44}
-            className="text-base border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"
+            className="w-[180px] h-11 text-base border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"
           />
         </div>
         <hr className="border border-[#0A2C8C1A] my-5" />
         {/* Category Buttons */}
-        <div className="flex space-x-4">
+        <div className="hidden sm:flex md:space-x-3 lg:space-x-4 mb-6">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={` text-base leading-[22px] cursor-pointer px-4 py-2 rounded transition-all ${
+              className={`font-normal text-base sm:text-sm md:text-base cursor-pointer px-4 py-2 rounded transition-all ${
+                activeCategory === category
+                  ? "text-[#0C89FF] font-bold"
+                  : "text-[#474747] font-normal"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+        <div className="grid sm:hidden grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 items-start mb-6">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`font-normal text-base sm:text-sm md:text-base cursor-pointer px-4 py-2 rounded transition-all ${
                 activeCategory === category
                   ? "text-[#0C89FF] font-bold"
                   : "text-[#474747] font-normal"
@@ -84,7 +120,7 @@ const CheckOurPreviousWork: React.FC = () => {
         <Slider ref={setSliderRef} {...settings}>
           {previousWorkData1[activeCategory]?.map((service) => (
             <div key={service.id} className="px-4">
-              <div className="bg-white p-6 pb-0 text-center flex justify-center mb-4 h-[279px] w-[498px] overflow-hidden">
+              <div className="bg-white p-6 pb-0 text-center flex justify-center mb-4 h-[279px] w-full md:w-[498px] overflow-hidden">
                 <Image
                   src={service.image}
                   alt="PHOTO"
@@ -97,7 +133,7 @@ const CheckOurPreviousWork: React.FC = () => {
         <Slider ref={setSliderRef} {...settings}>
           {previousWorkData2[activeCategory]?.map((service) => (
             <div key={service.id} className="px-4">
-              <div className="bg-white p-6 pt-0 text-center flex justify-center mb-4 h-[279px] w-[498px] overflow-hidden">
+              <div className="bg-white p-6 pt-0 text-center flex justify-center mb-4 h-[279px] w-full md:w-[498px] overflow-hidden">
                 <Image
                   src={service.image}
                   alt="PHOTO"
@@ -149,7 +185,7 @@ const CheckOurPreviousWork: React.FC = () => {
             </div>
 
             {/* Creative Portfolio End e */}
-            <div className="flex items-center gap-2 ml-auto w-[278px] h-[20px]">
+            <div className="md:flex hidden items-center gap-2 ml-auto w-[278px] h-[20px]">
               <span className="text-[#353535] font-raleway font-medium text-sm leading-5">
                 Creative portfolio
               </span>

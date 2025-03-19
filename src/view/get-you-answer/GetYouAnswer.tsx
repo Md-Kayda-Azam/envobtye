@@ -42,11 +42,11 @@ const GetYourAnswers: React.FC = () => {
           <span className="text-[#0C89FF] font-semibold text-base leading-6">
             MORE DETAILS
           </span>
-          <h2 className="text-4xl md:text-5xl leading-5 font-bold text-[#0A2C8C]">
+          <h2 className="text-xl sm:text-4xl md:text-5xl leading-5 font-bold text-[#0A2C8C]">
             Get Your Answers
           </h2>
         </div>
-        <div className="flex justify-between items-center my-10">
+        <div className="flex md:flex-row flex-col justify-between items-center my-10">
           {cardData.map((card) => (
             <div
               key={card.id}
@@ -73,21 +73,21 @@ const GetYourAnswers: React.FC = () => {
                 }`}
               >
                 <h3
-                  className={`text-3xl font-semibold leading-9 mb-2 ${
+                  className={`text-2xl sm:text-base lg:text-2xl xl:text-3xl font-semibold leading-9 mb-2 ${
                     activeCard === card.id ? "text-white" : "text-[#001246]"
                   }`}
                 >
                   {card.title}
                 </h3>
                 <span
-                  className={`font-normal text-base leading-[22px] ${
+                  className={`font-normal text-base sm:text-sm lg:text-base leading-[22px] ${
                     activeCard === card.id ? "text-[#65B5FF]" : "text-[#65B5FF]"
                   }`}
                 >
                   {card.subtitle}
                 </span>
                 <p
-                  className={`text-base font-normal leading-6 ${
+                  className={`text-base sm:text-sm lg:text-base font-normal leading-6 ${
                     activeCard === card.id ? "text-white" : "text-[#424242]"
                   }`}
                 >
@@ -100,9 +100,7 @@ const GetYourAnswers: React.FC = () => {
         <div className="flex justify-center items-center">
           <Button
             text="See Pricing"
-            width={180}
-            height={44}
-            className="text-base border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"
+            className="w-[180px] h-11 text-base border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"
           />
         </div>
       </div>

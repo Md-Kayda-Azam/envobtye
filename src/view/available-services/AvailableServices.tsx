@@ -41,23 +41,23 @@ const AvailableServices: React.FC = () => {
     centerPadding: "30px",
     responsive: [
       {
-        breakpoint: 1024, // 1024px এর নিচে
+        breakpoint: 1024, // 1024px
         settings: {
-          slidesToShow: 2, // ২টি slide দেখাবে
+          slidesToShow: 2,
           centerPadding: "20px",
         },
       },
       {
-        breakpoint: 768, // 768px এর নিচে
+        breakpoint: 768, // 768px
         settings: {
-          slidesToShow: 1, // ১টি slide দেখাবে
+          slidesToShow: 1,
           centerPadding: "10px",
         },
       },
       {
-        breakpoint: 480, // 480px এর নিচে (Mobile View)
+        breakpoint: 480, // 480px (Mobile View)
         settings: {
-          slidesToShow: 1, // ১টি slide দেখাবে
+          slidesToShow: 1,
           centerPadding: "0px",
         },
       },
@@ -83,12 +83,26 @@ const AvailableServices: React.FC = () => {
         </div>
         <hr className="border border-[#FFFFFF42] my-5" />
         {/* Category Buttons */}
-        <div className="flex sm:flex-row flex-col sm:space-x-1 md:space-x-3 lg:space-x-4 mb-6">
+        <div className="hidden sm:flex sm:flex-row flex-col md:space-x-3 lg:space-x-4 mb-6">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`font-normal text-base leading-[22px] cursor-pointer px-4 py-2 rounded transition-all ${
+              className={`font-normal text-base sm:text-sm md:text-base leading-[22px] cursor-pointer px-4 py-2 rounded transition-all ${
+                activeCategory === category ? "text-blue-500" : "text-white"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+        {/* Category Buttons */}
+        <div className="grid sm:hidden grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 items-start mb-6">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`font-normal text-base sm:text-sm md:text-base leading-[22px] cursor-pointer px-4 py-2 rounded transition-all ${
                 activeCategory === category ? "text-blue-500" : "text-white"
               }`}
             >
@@ -104,7 +118,7 @@ const AvailableServices: React.FC = () => {
           {servicesData[activeCategory]?.map((service) => (
             <div key={service.id} className="p-4">
               <div className="bg-[#092768] rounded-lg p-6 text-center shadow-lg">
-                <div className="flex justify-center mb-4 h-20 w-80">
+                <div className="flex justify-center mb-4 h-20">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -112,7 +126,7 @@ const AvailableServices: React.FC = () => {
                     height={80}
                   />
                 </div>
-                <h3 className="text-white text-2xl leading-[42px] font-semibold">
+                <h3 className="text-white text-xl! lg:text-2xl leading-9 lg:leading-[42px] font-semibold">
                   {service.title}
                 </h3>
                 <p className="text-gray-300 text-base leading-[42px] font-normal">
@@ -134,17 +148,7 @@ const AvailableServices: React.FC = () => {
         </Slider>
 
         {/* Navigation Buttons */}
-        {/* <div
-          className="relative"
-          style={{
-            backgroundImage: `url(${frame.src})`, // Use the frame image as background
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "bottom",
-            backgroundSize: "cover",
-            width: "100%",
-            height: "100px",
-          }}
-        >
+        <div className="relative my-10">
           <div className="flex justify-center items-center gap-3 w-full mt-4">
             <div className="w-[84px] flex gap-4">
               <button
@@ -173,13 +177,13 @@ const AvailableServices: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex justify-end gap-2 mr-16 items-center mb-0">
+          <div className="hidden sm:flex justify-end gap-2 mr-16 items-center mb-0">
             <span className="text-white font-raleway font-medium text-sm leading-5">
               Creative Solution
             </span>
             <Image src={separator} alt="Separator" width={50} height={20} />{" "}
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

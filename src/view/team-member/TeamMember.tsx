@@ -6,7 +6,6 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-import frame from "@/assets/Frame1000005851.png";
 import teamMember1 from "@/assets/team-member/teammember1.png";
 import teamMember2 from "@/assets/team-member/teammember2.png";
 import teamMember3 from "@/assets/team-member/teammember3.png";
@@ -29,6 +28,29 @@ const TeamMember: React.FC = () => {
     arrows: false,
     centerMode: true,
     centerPadding: "30px",
+    responsive: [
+      {
+        breakpoint: 1024, // 1024px
+        settings: {
+          slidesToShow: 2,
+          centerPadding: "20px",
+        },
+      },
+      {
+        breakpoint: 768, // 768px
+        settings: {
+          slidesToShow: 1,
+          centerPadding: "10px",
+        },
+      },
+      {
+        breakpoint: 480, // 480px (Mobile View)
+        settings: {
+          slidesToShow: 1,
+          centerPadding: "0px",
+        },
+      },
+    ],
   };
 
   // Review Data
@@ -72,22 +94,14 @@ const TeamMember: React.FC = () => {
   ];
 
   return (
-    <div
-      className="bg-[#FFFFFF] py-40 flex justify-center items-center"
-      style={{
-        backgroundImage: `url(${frame.src})`, // Use the frame image as background
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "bottom",
-        backgroundSize: "cover",
-      }}
-    >
-      <div className="w-[1100px]">
+    <div className="bg-[#FFFFFF] py-40 flex justify-center items-center">
+      <div className="max-w-[984px] w-full">
         {/* Section Title */}
         <div className="flex flex-col justify-center items-center gap-2 mb-10">
           <span className="text-[#0C89FF] font-semibold text-base leading-6">
             EXPERIENCED TEAM
           </span>
-          <h2 className="text-[45px] md:text-5xl font-semibold text-[#001246] leading-6 max-w-[800px] mx-auto text-center">
+          <h2 className="text-3xl sm:text-[45px] md:text-5xl font-semibold text-[#001246] leading-6 max-w-[800px] mx-auto text-center">
             Our Team Members
           </h2>
         </div>

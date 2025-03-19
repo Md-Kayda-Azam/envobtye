@@ -32,6 +32,29 @@ const ClientReviews: React.FC = () => {
     arrows: false,
     centerMode: true,
     centerPadding: "30px",
+    responsive: [
+      {
+        breakpoint: 1024, // 1024px
+        settings: {
+          slidesToShow: 2,
+          centerPadding: "20px",
+        },
+      },
+      {
+        breakpoint: 768, // 768px
+        settings: {
+          slidesToShow: 1,
+          centerPadding: "10px",
+        },
+      },
+      {
+        breakpoint: 480, // 480px (Mobile View)
+        settings: {
+          slidesToShow: 1,
+          centerPadding: "0px",
+        },
+      },
+    ],
   };
 
   // Review Data
@@ -93,22 +116,14 @@ const ClientReviews: React.FC = () => {
   ];
 
   return (
-    <div
-      className="bg-[#FFFFFF] pt-10 flex justify-center items-center"
-      style={{
-        backgroundImage: `url(${frame.src})`, // Use the frame image as background
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "bottom",
-        backgroundSize: "cover",
-      }}
-    >
-      <div className="w-[984px]">
+    <div className="bg-[#FFFFFF] pt-10 flex justify-center items-center">
+      <div className="max-w-[984px] w-full">
         {/* Section Title */}
         <div className="flex flex-col justify-center items-center gap-2 mb-10">
           <span className="text-[#0C89FF] font-semibold text-base leading-6">
             CLIENT REVIEWS
           </span>
-          <h2 className="text-[45px] md:text-5xl font-semibold text-[#001246] leading-6 max-w-[800px] mx-auto text-center">
+          <h2 className="text-3xl sm:text-[45px] md:text-5xl font-semibold text-[#001246] leading-6 max-w-[800px] mx-auto text-center">
             Our Proud Clients
           </h2>
         </div>
@@ -150,7 +165,7 @@ const ClientReviews: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <h4 className="text-[#0A2C8C] font-semibold text-lg">
+                      <h4 className="text-[#0A2C8C] font-semibold text-base sm:text-lg">
                         {review.name}
                       </h4>
                       <div className="flex items-center">
@@ -206,7 +221,7 @@ const ClientReviews: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <h4 className="text-[#0A2C8C] font-semibold text-lg">
+                      <h4 className="text-[#0A2C8C] font-semibold text-base sm:text-lg">
                         {review.name}
                       </h4>
                       <div className="flex items-center">
