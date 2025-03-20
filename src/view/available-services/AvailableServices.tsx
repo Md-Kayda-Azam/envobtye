@@ -67,7 +67,7 @@ const AvailableServices: React.FC = () => {
   return (
     <div className="bg-[#001655] pt-10">
       <div className="px-9 sm:px-5">
-        <div className="text-start flex sm:flex-row flex-col gap-5 sm:gap-0  justify-between items-center w-full mb-6">
+        <div className="text-start flex sm:flex-row flex-col gap-5 sm:gap-0 justify-between items-center w-full mb-6">
           <div className="flex flex-col items-center justify-center sm:justify-start sm:items-start">
             <span className="text-base font-semibold leading-6 text-[#FF693B]">
               DIGITAL SERVICES
@@ -76,11 +76,19 @@ const AvailableServices: React.FC = () => {
               Check Our Available Services
             </h2>
           </div>
-          <Button
-            text="All Services"
-            className="h-11 w-[180px]  text-base rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"
-          />
+
+          <div className="relative">
+            {/* Blur Effect Layer */}
+            <div className="hidden sm:block absolute -top-16 -left-2 w-[181px] h-[150px] bg-[#0a3cca40] blur-xl rounded-full"></div>
+
+            {/* Button */}
+            <Button
+              text="All Services"
+              className="relative h-11 w-[180px] text-base rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200] z-10"
+            />
+          </div>
         </div>
+
         <hr className="border border-[#FFFFFF42] my-5" />
         {/* Category Buttons */}
         <div className="hidden sm:flex sm:flex-row flex-col md:space-x-3 lg:space-x-4 mb-6">
@@ -114,6 +122,10 @@ const AvailableServices: React.FC = () => {
 
       {/* Services Slider */}
       <div className="relative">
+        <div className="hidden lg:block">
+          <div className="z-50 absolute top-2 right-118 2xl:right-134 w-[381px] h-[350px] bg-[#0a3cca40] blur-lg rounded-full"></div>
+        </div>
+
         <Slider ref={setSliderRef} {...settings}>
           {servicesData[activeCategory]?.map((service) => (
             <div key={service.id} className="p-4">

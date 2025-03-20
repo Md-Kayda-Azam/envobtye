@@ -34,10 +34,14 @@ const ContactSection = () => {
       <div className="flex flex-col md:flex-row py-10 lg:pt-40 lg:pb-20 px-6 md:px-20 justify-between items-center md:items-start">
         <div className="w-full max-w-[1106px] h-full gap-10 lg-gap-0 flex flex-col lg:flex-row justify-center items-start lg:items-center">
           {/* Left Side - Form */}
-          <div className="w-full lg:w-[523px] bg-[#0A2C8C33] p-8 rounded-lg shadow-lg">
+
+          <div className="relative w-full lg:w-[523px] bg-[#0A2C8C33] p-8 rounded-lg shadow-lg overflow-hidden">
+            {/* Bottom-Left Blur */}
+            <div className="absolute bottom-0 left-0 w-[150px] h-[451px] bg-[#043ad1] blur-3xl opacity-50"></div>
+
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10"
             >
               <div className="flex gap-2 flex-col">
                 <label
@@ -46,7 +50,6 @@ const ContactSection = () => {
                 >
                   Name
                 </label>
-                {/* Name */}
                 <input
                   {...register("name", { required: "Name is required" })}
                   type="text"
@@ -56,6 +59,7 @@ const ContactSection = () => {
                   }`}
                 />
               </div>
+
               <div className="flex gap-2 flex-col">
                 <label
                   htmlFor=""
@@ -63,7 +67,6 @@ const ContactSection = () => {
                 >
                   Email
                 </label>
-                {/* Email */}
                 <input
                   {...register("email", {
                     required: "Email is required",
@@ -87,7 +90,6 @@ const ContactSection = () => {
                 >
                   Phone
                 </label>
-                {/* Phone */}
                 <input
                   {...register("phone", { required: "Phone is required" })}
                   type="text"
@@ -97,14 +99,14 @@ const ContactSection = () => {
                   }`}
                 />
               </div>
+
               <div className="flex gap-2 flex-col">
                 <label
                   htmlFor=""
                   className="font-semibold text-sm leading-5 text-[#FFFFFF]"
                 >
-                  Compnay
+                  Company
                 </label>
-                {/* Company */}
                 <input
                   {...register("company", { required: "Company is required" })}
                   type="text"
@@ -122,7 +124,6 @@ const ContactSection = () => {
                 >
                   Message
                 </label>
-                {/* Message */}
                 <textarea
                   {...register("message", { required: "Message is required" })}
                   placeholder="Type your message here..."
@@ -133,10 +134,9 @@ const ContactSection = () => {
                 />
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
-                className="sm:col-span-2 mt-4 w-full sm:max-w-[151px] bg-[#FFFFFF1A] px-3 py-3 rounded-md text-[#FFFFFF] font-semibold  border border-[#F1F3F74D] shadow-[2px] shadow-[#19213D14] text-sm leading-5 flex justify-center sm:justify-baseline items-center gap-2"
+                className="cursor-pointer sm:col-span-2 mt-4 w-full sm:max-w-[151px] bg-[#FFFFFF1A] px-3 py-3 rounded-md text-[#FFFFFF] font-semibold border border-[#F1F3F74D] shadow-[2px] shadow-[#19213D14] text-sm leading-5 flex justify-center sm:justify-baseline items-center gap-2"
               >
                 <span> Send Message</span>
                 <FaArrowRight />
@@ -145,7 +145,9 @@ const ContactSection = () => {
           </div>
 
           {/* Right Side - Contact Info */}
-          <div className="w-full md:w-[551px] mt-10 md:mt-0 pb-12">
+          <div className="relative w-full md:w-[551px] mt-10 md:mt-0 pb-12">
+            {/* Bottom-Left Blur */}
+            <div className="absolute bottom-0 right-50 w-[150px] h-[151px] bg-[#043ad1] blur-3xl opacity-50"></div>
             <div className="flex flex-col md:items-start items-center lg:gap-5">
               <h2 className="text-2xl text-center sm:text-start sm:text-3xl lg:text-5xl font-extrabold sm:leading-12">
                 Let us know what you think!

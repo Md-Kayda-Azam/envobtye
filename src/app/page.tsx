@@ -15,8 +15,10 @@ export default function Home() {
       <Header />
       <HeroSection />
       <AvailableServices />
-      <GetYourAnswers />
-      <CheckOurPreviousWork />
+      <div className="bg-white relative w-full h-full">
+        <GetYourAnswers />
+        <CheckOurPreviousWork />
+      </div>
       <HowWeWork />
       <ClientReviews />
       <TeamMember />

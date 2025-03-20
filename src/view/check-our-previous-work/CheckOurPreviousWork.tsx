@@ -9,6 +9,7 @@ import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import Button from "@/components/Button/Button";
 import frame from "@/assets/Frame1000005851.png";
 import separator from "@/assets/Separator.png";
+import backgroundVendor from "@/assets/waveBg.png";
 
 const categories: string[] = [
   "UI/UX",
@@ -65,38 +66,48 @@ const CheckOurPreviousWork: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FFFFFF] pt-10">
-      <div className="px-9 sm:px-5">
-        <div className="text-start gap-5 sm:gap-0 sm:flex-row flex-col flex justify-between items-center w-full mb-6">
-          <div className="flex flex-col items-center justify-center sm:justify-start sm:items-start">
-            <span className="text-base font-semibold leading-6 text-[#0C89FF]">
-              UI/UX PORTFOLIO
-            </span>
-            <h2 className="text-[#001246] text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-              Check Our Previous Work
-            </h2>
+    <div className="bg-[#FFFFFF]">
+      <div className="mt-5 sm:mt-0 sm:h-[300px]">
+        <div
+          className="flex flex-col justify-center items-center w-full h-[400px] lg:h-[450]  xl:h-[500px]"
+          style={{
+            backgroundImage: `url(${backgroundVendor.src || backgroundVendor})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "bottom",
+            backgroundSize: "cover",
+          }}
+        >
+          <div className="text-start gap-5 sm:gap-0 sm:flex-row flex-col flex justify-between items-center w-full px-4">
+            <div className="flex flex-col items-center justify-center sm:justify-start sm:items-start">
+              <span className="text-base font-semibold leading-6 text-[#0C89FF]">
+                UI/UX PORTFOLIO
+              </span>
+              <h2 className="text-[#001246] text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                Check Our Previous Work
+              </h2>
+            </div>
+            <Button
+              text="All Portfolio"
+              className="w-[180px] h-11 text-base border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"
+            />
           </div>
-          <Button
-            text="All Portfolio"
-            className="w-[180px] h-11 text-base border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"
-          />
-        </div>
-        <hr className="border border-[#0A2C8C1A] my-5" />
-        {/* Category Buttons */}
-        <div className="hidden sm:flex md:space-x-3 lg:space-x-4 mb-6">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`font-normal text-base sm:text-sm md:text-base cursor-pointer px-4 py-2 rounded transition-all ${
-                activeCategory === category
-                  ? "text-[#0C89FF] font-bold"
-                  : "text-[#474747] font-normal"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+          <hr className="border border-[#0A2C8C1A] my-2 w-full" />
+          {/* Category Buttons */}
+          <div className="w-full hidden sm:flex md:space-x-3 lg:space-x-4 mb-6">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`font-normal text-base sm:text-sm md:text-base cursor-pointer px-4 py-2 rounded transition-all ${
+                  activeCategory === category
+                    ? "text-[#0C89FF] font-bold"
+                    : "text-[#474747] font-normal"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="grid sm:hidden grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 items-start mb-6">
           {categories.map((category) => (

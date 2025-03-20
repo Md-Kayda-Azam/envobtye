@@ -36,7 +36,7 @@ const GetYourAnswers: React.FC = () => {
   const [activeCard, setActiveCard] = useState(1);
 
   return (
-    <section className="relative py-12 px-6 bg-white flex justify-center items-center flex-col">
+    <section className="pt-12 px-6 bg-white flex justify-center items-center flex-col">
       <div className="w-full max-w-[1107px]">
         <div className="flex justify-center items-center flex-col gap-3.5">
           <span className="text-[#0C89FF] font-semibold text-base leading-6">
@@ -97,7 +97,7 @@ const GetYourAnswers: React.FC = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center items-center">
+        <div className="lg:absolute lg:ml-120 flex justify-center items-center">
           <Button
             text="See Pricing"
             className="w-[180px] h-11 text-base border-transparent border rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200]"

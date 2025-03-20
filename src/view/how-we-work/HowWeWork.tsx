@@ -46,11 +46,9 @@ const HowWeWork: React.FC = () => {
         <div className="flex justify-center items-center mt-12">
           <Button
             text="Contact Now"
-            width={238}
-            height={44}
             bgColor="#FF693B"
             textColor="#FFFFFF"
-            className="rounded-md font-semibold hover:bg-[#FF6347] transition-all"
+            className="w-[238px] h-11 rounded-md text-white font-semibold bg-[#FF693B] hover:text-[#FF693B] hover:bg-white border border-[#FF693B] transition-all"
           />
         </div>
       </div>
