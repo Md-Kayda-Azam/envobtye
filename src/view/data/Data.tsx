@@ -9,10 +9,23 @@ import previousWork5 from "@/assets/previous-work/previous-work-5.png";
 import previousWork6 from "@/assets/previous-work/previous-work-6.png";
 import previousWork7 from "@/assets/previous-work/previous-work-7.png";
 import previousWork8 from "@/assets/previous-work/previous-work-8.png";
-
+import starIcon from "@/assets/client-reviews/Star.png"; // Replace with your star icon image
+import fiverrIcon from "@/assets/client-reviews/fiverr.png"; // Replace with your Fiverr icon
+import upworkIcon from "@/assets/client-reviews/upwork.png"; // Replace with your Upwork icon
+import client1 from "@/assets/client-reviews/client2.png"; // Replace with your client images
+import client2 from "@/assets/client-reviews/client2.png";
+import client3 from "@/assets/client-reviews/client2.png";
+import client4 from "@/assets/client-reviews/client2.png";
 // Import StaticImageData for type safety
 import { StaticImageData } from "next/image";
-
+interface Review {
+  id: number;
+  review: string;
+  clientImage: any;
+  name: string;
+  platform: any;
+  platformIcon: any;
+}
 interface Service {
   id: number;
   title: string;
@@ -230,3 +243,61 @@ export const previousWorkData2: PreviousWorkData = {
     { id: 8, image: previousWork8 },
   ],
 };
+
+// Review Data
+export const reviews: Review[] = [
+  {
+    id: 1,
+    name: "Stephanie Powell",
+    platform: "Fiverr",
+    platformIcon: fiverrIcon,
+    review:
+      "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
+    clientImage: client1,
+  },
+  {
+    id: 2,
+    name: "Brian Clark",
+    platform: "Upwork",
+    platformIcon: upworkIcon,
+    review:
+      "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
+    clientImage: client2,
+  },
+  {
+    id: 3,
+    name: "Christopher White",
+    platform: "Upwork",
+    platformIcon: upworkIcon,
+    review:
+      "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
+    clientImage: client3,
+  },
+  {
+    id: 4,
+    name: "Brian Clark",
+    platform: "Fiverr",
+    platformIcon: fiverrIcon,
+    review:
+      "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
+    clientImage: client4,
+  },
+  {
+    id: 5,
+    name: "Christopher White",
+    platform: "Upwork",
+    platformIcon: upworkIcon,
+    review:
+      "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
+    clientImage: client2,
+  },
+  {
+    id: 6,
+    name: "Stephanie Powell",
+    platform: "Fiverr",
+    platformIcon: fiverrIcon,
+    review:
+      "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
+    clientImage: client3,
+  },
+];

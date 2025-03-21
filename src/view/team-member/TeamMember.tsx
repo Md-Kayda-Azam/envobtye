@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
@@ -16,6 +16,18 @@ const TeamMember: React.FC = () => {
   const [activeButton, setActiveButton] = useState<"prev" | "next" | null>(
     null
   );
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate a 30-second delay for data loading
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Switch to actual data after 30 seconds
+    }, 1000); // 30,000 milliseconds = 30 seconds
+
+    // Cleanup timeout on component unmount
+    return () => clearTimeout(timer);
+  }, []);
 
   const settings = {
     dots: false,
@@ -91,26 +103,48 @@ const TeamMember: React.FC = () => {
 
         <div className="relative">
           <Slider ref={setSliderRef} {...settings}>
-            {teamMembers.map((member) => (
-              <div key={member.id} className="p-[0.5px] text-center">
-                <div className="w-full max-w-[355px] mx-auto relative">
-                  <div className="w-full h-[350px] relative">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="bg-[#0A2C8C] text-white p-4 h-[96px] absolute bottom-0 left-0 right-0">
-                    <div className="flex justify-center items-start flex-col w-full">
-                      <h3 className="text-xl font-semibold">{member.name}</h3>
-                      <p className="text-base font-medium">{member.role}</p>
+            {isLoading || teamMembers.length === 0
+              ? // Skeleton Loader
+                [...Array(3)].map((_, index) => (
+                  <div key={index} className="p-[0.5px] text-center">
+                    <div className="w-full max-w-[355px] mx-auto relative">
+                      {/* Skeleton Image Placeholder */}
+                      <div className="w-full h-[350px] relative animate-pulse">
+                        <div className="bg-gray-300 w-full h-full"></div>
+                      </div>
+                      {/* Skeleton Text Overlay */}
+                      <div className="bg-[#0A2C8C] p-4 h-[96px] absolute bottom-0 left-0 right-0 animate-pulse">
+                        <div className="flex justify-center items-start flex-col w-full">
+                          <div className="h-5 bg-gray-400 rounded w-3/4 mb-2"></div>
+                          <div className="h-4 bg-gray-400 rounded w-1/2"></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))
+              : // Actual Team Members
+                teamMembers.map((member) => (
+                  <div key={member.id} className="p-[0.5px] text-center">
+                    <div className="w-full max-w-[355px] mx-auto relative">
+                      <div className="w-full h-[350px] relative">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="bg-[#0A2C8C] text-white p-4 h-[96px] absolute bottom-0 left-0 right-0">
+                        <div className="flex justify-center items-start flex-col w-full">
+                          <h3 className="text-xl font-semibold">
+                            {member.name}
+                          </h3>
+                          <p className="text-base font-medium">{member.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
           </Slider>
 
           <div className="relative mt-4">

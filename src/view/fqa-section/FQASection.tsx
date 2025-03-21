@@ -63,7 +63,7 @@ const FAQSection: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FFFFFF] py-10 flex justify-center items-center">
+    <div className="bg-[#FFFFFF] pb-40 pt-10 flex justify-center items-center">
       <div className="w-full max-w-[900px] px-4">
         {/* Section Title */}
         <div className="flex flex-col justify-center items-center gap-2 mb-10">

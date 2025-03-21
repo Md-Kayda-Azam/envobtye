@@ -1,25 +1,31 @@
 "use client";
-
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image"; // Added for image support
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-import frame from "@/assets/Frame1000005851.png";
 import starIcon from "@/assets/client-reviews/Star.png"; // Replace with your star icon image
-import fiverrIcon from "@/assets/client-reviews/fiverr.png"; // Replace with your Fiverr icon
-import upworkIcon from "@/assets/client-reviews/upwork.png"; // Replace with your Upwork icon
-import client1 from "@/assets/client-reviews/client2.png"; // Replace with your client images
-import client2 from "@/assets/client-reviews/client2.png";
-import client3 from "@/assets/client-reviews/client2.png";
-import client4 from "@/assets/client-reviews/client2.png";
+
+import { reviews } from "../data/Data";
 
 const ClientReviews: React.FC = () => {
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
   const [activeButton, setActiveButton] = useState<"prev" | "next" | null>(
     null
   );
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate a 30-second delay for data loading
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Switch to actual reviews after 30 seconds
+    }, 2000); // 30,000 milliseconds = 30 seconds
+
+    // Cleanup timeout on component unmount
+    return () => clearTimeout(timer);
+  }, []);
 
   const settings = {
     dots: false,
@@ -57,64 +63,6 @@ const ClientReviews: React.FC = () => {
     ],
   };
 
-  // Review Data
-  const reviews = [
-    {
-      id: 1,
-      name: "Stephanie Powell",
-      platform: "Fiverr",
-      platformIcon: fiverrIcon,
-      review:
-        "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
-      clientImage: client1,
-    },
-    {
-      id: 2,
-      name: "Brian Clark",
-      platform: "Upwork",
-      platformIcon: upworkIcon,
-      review:
-        "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
-      clientImage: client2,
-    },
-    {
-      id: 3,
-      name: "Christopher White",
-      platform: "Upwork",
-      platformIcon: upworkIcon,
-      review:
-        "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
-      clientImage: client3,
-    },
-    {
-      id: 4,
-      name: "Brian Clark",
-      platform: "Fiverr",
-      platformIcon: fiverrIcon,
-      review:
-        "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
-      clientImage: client4,
-    },
-    {
-      id: 5,
-      name: "Christopher White",
-      platform: "Upwork",
-      platformIcon: upworkIcon,
-      review:
-        "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
-      clientImage: client2,
-    },
-    {
-      id: 6,
-      name: "Stephanie Powell",
-      platform: "Fiverr",
-      platformIcon: fiverrIcon,
-      review:
-        "Lorem ipsum dolor sit amet dolor sit consectetur eget maecenas saplen fusce eget risus purus suspendisse turpls volputat onare",
-      clientImage: client3,
-    },
-  ];
-
   return (
     <div className="bg-[#FFFFFF] pt-10 flex justify-center items-center">
       <div className="max-w-[984px] w-full">
@@ -131,116 +79,184 @@ const ClientReviews: React.FC = () => {
         {/* Services Slider */}
         <div className="relative">
           <Slider ref={setSliderRef} {...settings}>
-            {reviews.map((review) => (
-              <div key={review.id} className="p-4">
-                <div className="bg-white p-6 rounded-lg shadow-lg text-left border border-gray-200">
-                  {/* Star Rating */}
-                  <div className="flex mb-4">
-                    {[...Array(5)].map((_, index) => (
-                      <Image
-                        key={index}
-                        src={starIcon}
-                        alt="Star"
-                        width={20}
-                        height={20}
-                        className="mr-1"
-                      />
-                    ))}
-                  </div>
+            {isLoading || reviews.length === 0
+              ? // Skeleton Loader
+                [...Array(3)].map((_, index) => (
+                  <div key={index} className="p-4">
+                    <div className="bg-white p-6 rounded-lg shadow-lg text-left border border-gray-200 animate-pulse">
+                      {/* Star Rating Skeleton */}
+                      <div className="flex mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="w-5 h-5 bg-gray-300 rounded-full mr-1"
+                          ></div>
+                        ))}
+                      </div>
 
-                  {/* Review Text */}
-                  <p className="text-gray-600 text-base leading-relaxed mb-4">
-                    {review.review}
-                  </p>
+                      {/* Review Text Skeleton */}
+                      <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
+                      <div className="h-4 bg-gray-300 rounded w-full mb-4"></div>
 
-                  {/* Client Info */}
-                  <div className="flex items-center">
-                    <div className="h-12 w-12 overflow-hidden mr-2">
-                      <Image
-                        src={review.clientImage}
-                        alt={review.name}
-                        className="rounded-full object-cover w-full h-full"
-                        width={50}
-                        height={50}
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-[#0A2C8C] font-semibold text-base sm:text-lg">
-                        {review.name}
-                      </h4>
+                      {/* Client Info Skeleton */}
                       <div className="flex items-center">
-                        <Image
-                          src={review.platformIcon}
-                          alt={review.platform}
-                          width={20}
-                          height={20}
-                          className="mr-2"
-                        />
-                        <span className="text-gray-500 text-sm">
-                          From {review.platform}
-                        </span>
+                        <div className="h-12 w-12 bg-gray-300 rounded-full mr-2"></div>
+                        <div>
+                          <div className="h-4 bg-gray-300 rounded w-24 mb-1"></div>
+                          <div className="flex items-center">
+                            <div className="w-5 h-5 bg-gray-300 rounded-full mr-2"></div>
+                            <div className="h-3 bg-gray-300 rounded w-20"></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))
+              : // Actual Reviews
+                reviews.map((review) => (
+                  <div key={review.id} className="p-4">
+                    <div className="bg-white p-6 rounded-lg shadow-lg text-left border border-gray-200">
+                      {/* Star Rating */}
+                      <div className="flex mb-4">
+                        {[...Array(5)].map((_, index) => (
+                          <Image
+                            key={index}
+                            src={starIcon}
+                            alt="Star"
+                            width={20}
+                            height={20}
+                            className="mr-1"
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <p className="text-gray-600 text-base leading-relaxed mb-4">
+                        {review.review}
+                      </p>
+
+                      {/* Client Info */}
+                      <div className="flex items-center">
+                        <div className="h-12 w-12 overflow-hidden mr-2">
+                          <Image
+                            src={review.clientImage}
+                            alt={review.name}
+                            className="rounded-full object-cover w-full h-full"
+                            width={50}
+                            height={50}
+                          />
+                        </div>
+                        <div>
+                          <h4 className="text-[#0A2C8C] font-semibold text-base sm:text-lg">
+                            {review.name}
+                          </h4>
+                          <div className="flex items-center">
+                            <Image
+                              src={review.platformIcon}
+                              alt={review.platform}
+                              width={20}
+                              height={20}
+                              className="mr-2"
+                            />
+                            <span className="text-gray-500 text-sm">
+                              From {review.platform}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
           </Slider>
           <Slider ref={setSliderRef} {...settings}>
-            {reviews.map((review) => (
-              <div key={review.id} className="p-4">
-                <div className="bg-white p-6 rounded-lg shadow-lg text-left border border-gray-200">
-                  {/* Star Rating */}
-                  <div className="flex mb-4">
-                    {[...Array(5)].map((_, index) => (
-                      <Image
-                        key={index}
-                        src={starIcon}
-                        alt="Star"
-                        width={20}
-                        height={20}
-                        className="mr-1"
-                      />
-                    ))}
-                  </div>
+            {isLoading || reviews.length === 0
+              ? // Skeleton Loader
+                [...Array(3)].map((_, index) => (
+                  <div key={index} className="p-4">
+                    <div className="bg-white p-6 rounded-lg shadow-lg text-left border border-gray-200 animate-pulse">
+                      {/* Star Rating Skeleton */}
+                      <div className="flex mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="w-5 h-5 bg-gray-300 rounded-full mr-1"
+                          ></div>
+                        ))}
+                      </div>
 
-                  {/* Review Text */}
-                  <p className="text-gray-600 text-base leading-relaxed mb-4">
-                    {review.review}
-                  </p>
+                      {/* Review Text Skeleton */}
+                      <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
+                      <div className="h-4 bg-gray-300 rounded w-full mb-4"></div>
 
-                  {/* Client Info */}
-                  <div className="flex items-center">
-                    <div className="h-12 w-12 overflow-hidden mr-2">
-                      <Image
-                        src={review.clientImage}
-                        alt={review.name}
-                        className="rounded-full object-cover w-full h-full"
-                        width={50}
-                        height={50}
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-[#0A2C8C] font-semibold text-base sm:text-lg">
-                        {review.name}
-                      </h4>
+                      {/* Client Info Skeleton */}
                       <div className="flex items-center">
-                        <Image
-                          src={review.platformIcon}
-                          alt={review.platform}
-                          width={20}
-                          height={20}
-                          className="mr-2"
-                        />
-                        <span className="text-gray-500 text-sm">
-                          From {review.platform}
-                        </span>
+                        <div className="h-12 w-12 bg-gray-300 rounded-full mr-2"></div>
+                        <div>
+                          <div className="h-4 bg-gray-300 rounded w-24 mb-1"></div>
+                          <div className="flex items-center">
+                            <div className="w-5 h-5 bg-gray-300 rounded-full mr-2"></div>
+                            <div className="h-3 bg-gray-300 rounded w-20"></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))
+              : // Actual Reviews
+                reviews.map((review) => (
+                  <div key={review.id} className="p-4">
+                    <div className="bg-white p-6 rounded-lg shadow-lg text-left border border-gray-200">
+                      {/* Star Rating */}
+                      <div className="flex mb-4">
+                        {[...Array(5)].map((_, index) => (
+                          <Image
+                            key={index}
+                            src={starIcon}
+                            alt="Star"
+                            width={20}
+                            height={20}
+                            className="mr-1"
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <p className="text-gray-600 text-base leading-relaxed mb-4">
+                        {review.review}
+                      </p>
+
+                      {/* Client Info */}
+                      <div className="flex items-center">
+                        <div className="h-12 w-12 overflow-hidden mr-2">
+                          <Image
+                            src={review.clientImage}
+                            alt={review.name}
+                            className="rounded-full object-cover w-full h-full"
+                            width={50}
+                            height={50}
+                          />
+                        </div>
+                        <div>
+                          <h4 className="text-[#0A2C8C] font-semibold text-base sm:text-lg">
+                            {review.name}
+                          </h4>
+                          <div className="flex items-center">
+                            <Image
+                              src={review.platformIcon}
+                              alt={review.platform}
+                              width={20}
+                              height={20}
+                              className="mr-2"
+                            />
+                            <span className="text-gray-500 text-sm">
+                              From {review.platform}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
           </Slider>
 
           {/* Navigation Buttons */}

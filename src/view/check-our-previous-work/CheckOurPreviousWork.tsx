@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
@@ -28,6 +28,18 @@ const CheckOurPreviousWork: React.FC = () => {
   const [activeButton, setActiveButton] = useState<"prev" | "next" | null>(
     null
   );
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate a 30-second delay for data loading
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Switch to actual data after 30 seconds
+    }, 500); // 30,000 milliseconds = 30 seconds
+
+    // Cleanup timeout on component unmount
+    return () => clearTimeout(timer);
+  }, []);
 
   const settings = {
     dots: false,
@@ -129,30 +141,52 @@ const CheckOurPreviousWork: React.FC = () => {
       {/* Services Slider */}
       <div className="relative">
         <Slider ref={setSliderRef} {...settings}>
-          {previousWorkData1[activeCategory]?.map((service) => (
-            <div key={service.id} className="px-4">
-              <div className="bg-white p-6 pb-0 text-center flex justify-center mb-4 h-[279px] w-full md:w-[498px] overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt="PHOTO"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-          ))}
+          {isLoading || !previousWorkData1[activeCategory]
+            ? // Skeleton Loader
+              [...Array(3)].map((_, index) => (
+                <div key={index} className="px-4">
+                  <div className="bg-white p-6 pb-0 text-center flex justify-center mb-4 h-[279px] w-full md:w-[498px] overflow-hidden animate-pulse">
+                    {/* Skeleton Image Placeholder */}
+                    <div className="h-full w-full bg-gray-300 rounded"></div>
+                  </div>
+                </div>
+              ))
+            : // Actual Previous Work Data
+              previousWorkData1[activeCategory]?.map((service) => (
+                <div key={service.id} className="px-4">
+                  <div className="bg-white p-6 pb-0 text-center flex justify-center mb-4 h-[279px] w-full md:w-[498px] overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt="PHOTO"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
         </Slider>
         <Slider ref={setSliderRef} {...settings}>
-          {previousWorkData2[activeCategory]?.map((service) => (
-            <div key={service.id} className="px-4">
-              <div className="bg-white p-6 pt-0 text-center flex justify-center mb-4 h-[279px] w-full md:w-[498px] overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt="PHOTO"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-          ))}
+          {isLoading || !previousWorkData1[activeCategory]
+            ? // Skeleton Loader
+              [...Array(3)].map((_, index) => (
+                <div key={index} className="px-4">
+                  <div className="bg-white p-6 pb-0 text-center flex justify-center mb-4 h-[279px] w-full md:w-[498px] overflow-hidden animate-pulse">
+                    {/* Skeleton Image Placeholder */}
+                    <div className="h-full w-full bg-gray-300 rounded"></div>
+                  </div>
+                </div>
+              ))
+            : // Actual Previous Work Data
+              previousWorkData1[activeCategory]?.map((service) => (
+                <div key={service.id} className="px-4">
+                  <div className="bg-white p-6 pb-0 text-center flex justify-center mb-4 h-[279px] w-full md:w-[498px] overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt="PHOTO"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
         </Slider>
 
         {/* Navigation Buttons */}
