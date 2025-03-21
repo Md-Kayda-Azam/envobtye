@@ -79,10 +79,13 @@ const FAQSection: React.FC = () => {
           {/* FAQ List */}
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={faq.id} className="border-b border-gray-300">
+              <div
+                key={faq.id}
+                className="border-b border-gray-300 w-full md:w-[800px] lg:w-[938px]"
+              >
                 {/* Question with Number */}
                 <div
-                  className="flex justify-between items-center py-4 cursor-pointer"
+                  className="flex justify-between items-center py-4 cursor-pointer "
                   onClick={() => toggleFAQ(faq.id)}
                 >
                   <div className="flex items-center gap-6">
@@ -103,17 +106,17 @@ const FAQSection: React.FC = () => {
                   </span>
                 </div>
                 {/* Answer with Animation */}
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {openFAQ === faq.id && (
                     <motion.div
                       variants={answerVariants}
                       initial="hidden"
                       animate="visible"
-                      exit="hidden"
+                      exit="hidden" // ✅ এই লাইন নিশ্চিত করো
                       className="overflow-hidden"
                     >
-                      <div className="pb-4 pl-12 text-gray-600">
-                        <p className="font-normal text-base sm:text-2xl leading-[34px]">
+                      <div className="pb-4 pl-12 text-gray-600 ">
+                        <p className="font-normal text-base sm:text-xl leading-[34px]">
                           {faq.answer}
                         </p>
                       </div>
