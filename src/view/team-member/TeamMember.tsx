@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
@@ -10,6 +9,7 @@ import teamMember1 from "@/assets/team-member/dersr.png";
 import teamMember2 from "@/assets/team-member/teammember3fdvesr.png";
 import teamMember3 from "@/assets/team-member/teammember4fedwsa.png";
 import teamMember4 from "@/assets/team-member/teammemberfejwayr.png";
+import { motion } from "framer-motion";
 
 const TeamMember: React.FC = () => {
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
@@ -92,14 +92,21 @@ const TeamMember: React.FC = () => {
   return (
     <div className="bg-[#FFFFFF] py-40 flex justify-center items-center">
       <div className="max-w-[984px] w-full">
-        <div className="flex flex-col justify-center items-center gap-2 mb-10">
-          <span className="text-[#0C89FF] font-semibold text-base leading-6">
-            EXPERIENCED TEAM
-          </span>
-          <h2 className="text-3xl sm:text-[45px] md:text-5xl font-semibold text-[#001246] text-center">
-            Our Team Members
-          </h2>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full"
+        >
+          <div className="flex flex-col justify-center items-center gap-2 mb-10">
+            <span className="text-[#0C89FF] font-semibold text-base leading-6">
+              EXPERIENCED TEAM
+            </span>
+            <h2 className="text-3xl sm:text-[45px] md:text-5xl font-semibold text-[#001246] text-center">
+              Our Team Members
+            </h2>
+          </div>
+        </motion.div>
 
         <div className="relative">
           <Slider ref={setSliderRef} {...settings}>

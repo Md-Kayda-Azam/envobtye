@@ -9,6 +9,7 @@ import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import Button from "@/components/Button/Button";
 import frame from "@/assets/Frame1000005851.png";
 import separator from "@/assets/Separator.png";
+import { motion } from "framer-motion";
 
 const categories: string[] = [
   "WEBSITE",
@@ -66,59 +67,66 @@ const AvailableServices: React.FC = () => {
 
   return (
     <div className="bg-[#001655] pt-10">
-      <div className="px-9 sm:px-5">
-        <div className="text-start flex sm:flex-row flex-col gap-5 sm:gap-0 justify-between items-center w-full mb-6">
-          <div className="flex flex-col items-center justify-center sm:justify-start sm:items-start">
-            <span className="text-base font-semibold leading-6 text-[#FF693B]">
-              DIGITAL SERVICES
-            </span>
-            <h2 className="text-white lg:text-5xl md:text-4xl text-center sm:text-3xl text-xl font-bold">
-              Check Our Available Services
-            </h2>
+      <motion.div
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="w-full"
+      >
+        <div className="px-9 sm:px-5">
+          <div className="text-start flex sm:flex-row flex-col gap-5 sm:gap-0 justify-between items-center w-full mb-6">
+            <div className="flex flex-col items-center justify-center sm:justify-start sm:items-start">
+              <span className="text-base font-semibold leading-6 text-[#FF693B]">
+                DIGITAL SERVICES
+              </span>
+              <h2 className="text-white lg:text-5xl md:text-4xl text-center sm:text-3xl text-xl font-bold">
+                Check Our Available Services
+              </h2>
+            </div>
+
+            <div className="relative">
+              {/* Blur Effect Layer */}
+              <div className="hidden sm:block absolute -top-16 -left-2 w-[181px] h-[150px] bg-[#0a3cca40] blur-xl rounded-full"></div>
+
+              {/* Button */}
+              <Button
+                text="All Services"
+                className="relative h-11 w-[180px] text-base rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200] z-10"
+              />
+            </div>
           </div>
 
-          <div className="relative">
-            {/* Blur Effect Layer */}
-            <div className="hidden sm:block absolute -top-16 -left-2 w-[181px] h-[150px] bg-[#0a3cca40] blur-xl rounded-full"></div>
-
-            {/* Button */}
-            <Button
-              text="All Services"
-              className="relative h-11 w-[180px] text-base rounded-md text-white transition-all duration-200 ease-in-out transform font-inter hover:bg-white hover:border-[#FF6200] hover:text-[#FF6200] bg-[#FF6200] z-10"
-            />
+          <hr className="border border-[#FFFFFF42] my-5" />
+          {/* Category Buttons */}
+          <div className="hidden sm:flex sm:flex-row flex-col md:space-x-3 lg:space-x-4 mb-6">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`font-normal text-base sm:text-sm md:text-base leading-[22px] cursor-pointer px-4 py-2 rounded transition-all ${
+                  activeCategory === category ? "text-blue-500" : "text-white"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          {/* Category Buttons */}
+          <div className="grid sm:hidden grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 items-start mb-6">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`font-normal text-base sm:text-sm md:text-base leading-[22px] cursor-pointer px-4 py-2 rounded transition-all ${
+                  activeCategory === category ? "text-blue-500" : "text-white"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
           </div>
         </div>
-
-        <hr className="border border-[#FFFFFF42] my-5" />
-        {/* Category Buttons */}
-        <div className="hidden sm:flex sm:flex-row flex-col md:space-x-3 lg:space-x-4 mb-6">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`font-normal text-base sm:text-sm md:text-base leading-[22px] cursor-pointer px-4 py-2 rounded transition-all ${
-                activeCategory === category ? "text-blue-500" : "text-white"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-        {/* Category Buttons */}
-        <div className="grid sm:hidden grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 items-start mb-6">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`font-normal text-base sm:text-sm md:text-base leading-[22px] cursor-pointer px-4 py-2 rounded transition-all ${
-                activeCategory === category ? "text-blue-500" : "text-white"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
+      </motion.div>
 
       {/* Services Slider */}
       <div className="relative">

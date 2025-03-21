@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import starIcon from "@/assets/client-reviews/Star.png"; // Replace with your star icon image
-
+import { motion } from "framer-motion";
 import { reviews } from "../data/Data";
 
 const ClientReviews: React.FC = () => {
@@ -67,14 +67,21 @@ const ClientReviews: React.FC = () => {
     <div className="bg-[#FFFFFF] pt-10 flex justify-center items-center">
       <div className="max-w-[984px] w-full">
         {/* Section Title */}
-        <div className="flex flex-col justify-center items-center gap-2 mb-10">
-          <span className="text-[#0C89FF] font-semibold text-base leading-6">
-            CLIENT REVIEWS
-          </span>
-          <h2 className="text-3xl sm:text-[45px] md:text-5xl font-semibold text-[#001246] leading-6 max-w-[800px] mx-auto text-center">
-            Our Proud Clients
-          </h2>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full"
+        >
+          <div className="flex flex-col justify-center items-center gap-2 mb-10">
+            <span className="text-[#0C89FF] font-semibold text-base leading-6">
+              CLIENT REVIEWS
+            </span>
+            <h2 className="text-3xl sm:text-[45px] md:text-5xl font-semibold text-[#001246] leading-6 max-w-[800px] mx-auto text-center">
+              Our Proud Clients
+            </h2>
+          </div>
+        </motion.div>
 
         {/* Services Slider */}
         <div className="relative">

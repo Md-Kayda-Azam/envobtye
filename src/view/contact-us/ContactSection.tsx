@@ -8,6 +8,7 @@ import Email from "@/assets/emailAdress.png";
 import Linkedin from "@/assets/Likedin.png";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import Footer from "../fooder/Fooder";
+import { motion } from "framer-motion";
 
 interface ContactType {
   name: string;
@@ -32,9 +33,13 @@ const ContactSection = () => {
   return (
     <div className="bg-[#001246] text-white">
       <div className="flex flex-col md:flex-row py-10 lg:pt-40 lg:pb-20 px-6 md:px-20 justify-between items-center md:items-start">
-        <div className="w-full max-w-[1106px] h-full gap-10 lg-gap-0 flex flex-col lg:flex-row justify-center items-start lg:items-center">
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-[1106px] h-full gap-10 lg-gap-0 flex flex-col lg:flex-row justify-center items-start lg:items-center"
+        >
           {/* Left Side - Form */}
-
           <div className="relative w-full lg:w-[523px] bg-[#0A2C8C33] p-8 rounded-lg shadow-lg overflow-hidden">
             {/* Bottom-Left Blur */}
             <div className="absolute bottom-0 left-0 w-[150px] h-[451px] bg-[#043ad1] blur-3xl opacity-50"></div>
@@ -108,7 +113,9 @@ const ContactSection = () => {
                   Company
                 </label>
                 <input
-                  {...register("company", { required: "Company is required" })}
+                  {...register("company", {
+                    required: "Company is required",
+                  })}
                   type="text"
                   placeholder="Envobyte"
                   className={`p-3 bg-[#11339333] text-white rounded-md border placeholder:text-sm placeholder:font-normal placeholder:leading-5 shadow-[2px] shadow-[#19213D14] focus:outline-none ${
@@ -125,7 +132,9 @@ const ContactSection = () => {
                   Message
                 </label>
                 <textarea
-                  {...register("message", { required: "Message is required" })}
+                  {...register("message", {
+                    required: "Message is required",
+                  })}
                   placeholder="Type your message here..."
                   className={`p-3 bg-[#11339333] text-white rounded-md border placeholder:text-sm placeholder:font-normal placeholder:leading-5 shadow-[2px] shadow-[#19213D14] focus:outline-none ${
                     errors.message ? "border-red-500" : "border-[#F1F3F74D]"
@@ -164,7 +173,11 @@ const ContactSection = () => {
                   label: "Business:",
                   value: "support@yourwebsite.com",
                 },
-                { icon: Whatapp, label: "Whatsapp:", value: "+1 647 777 2017" },
+                {
+                  icon: Whatapp,
+                  label: "Whatsapp:",
+                  value: "+1 647 777 2017",
+                },
                 {
                   icon: Linkedin,
                   label: "LinkedIn:",
@@ -207,7 +220,7 @@ const ContactSection = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
       <hr className="w-full border border-[#F1F3F726]" />
       <Footer />

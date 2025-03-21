@@ -84,7 +84,7 @@ const Header = () => {
                 <Link
                   key={index}
                   href="#"
-                  className={`hover:underline ${
+                  className={`hover:underline w-full py-1 text-start ${
                     item === "Home" ? "text-[#FF693B]" : "text-white"
                   }`}
                   onClick={() => setMenuOpen(false)}
