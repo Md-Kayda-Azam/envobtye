@@ -90,7 +90,7 @@ const TeamMember: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#FFFFFF] py-40 flex justify-center items-center">
+    <div className="bg-[#FFFFFF] py-20 flex justify-center items-center">
       <div className="max-w-[984px] w-full">
         <motion.div
           initial={{ opacity: 0, y: -100 }}

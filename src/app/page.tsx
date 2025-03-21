@@ -20,9 +20,11 @@ export default function Home() {
         <CheckOurPreviousWork />
       </div>
       <HowWeWork />
-      <ClientReviews />
-      <TeamMember />
-      <FAQSection />
+      <div className="bg-white w-full h-full">
+        <ClientReviews />
+        <TeamMember />
+        <FAQSection />
+      </div>
       <ContactUs />
     </div>
   );

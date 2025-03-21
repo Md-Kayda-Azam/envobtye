@@ -267,9 +267,9 @@ const ClientReviews: React.FC = () => {
           </Slider>
 
           {/* Navigation Buttons */}
-          <div className="relative mt-4">
+          <div className="relative my-4">
             {/* Navigation Buttons Center */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 flex gap-4">
+            <div className="flex w-full justify-center items-center gap-4">
               <button
                 onClick={() => {
                   setActiveButton("prev");
